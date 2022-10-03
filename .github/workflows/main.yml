@@ -11,4 +11,4 @@ jobs:
           snyk auth ${{ secrets.SNYK_TOKEN }}
           npm install --location=global snyk-delta
       - name: Snyk Delta Test
-        run: snyk test --json --print-deps | snyk-delta
+        run: snyk test --json --print-deps --command=.venv/bin/python --file=requirements.txt | snyk-delta
