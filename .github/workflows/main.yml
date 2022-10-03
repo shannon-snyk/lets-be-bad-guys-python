@@ -6,18 +6,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: snyk vuln scanning
-      - uses: snyk/actions/python-3.7@master
+        uses: snyk/actions/python-3.7@master
         env:
            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         continue-on-error: true
         with:
           command: monitor
-      - name: install snyk + snyk delta
+      - name: install snyk + snyk delta + snyk delta test
         run: |
           npm install --location=global snyk
           snyk auth ${{ secrets.SNYK_TOKEN }}
           npm install --location=global snyk-delta
           which python3
-      - name: Snyk Delta Test
-        run: snyk test --json --print-deps --command=/opt/hostedtoolcache/Python/3.10.7/x64/bin/python3 --file=requirements.txt | snyk-delta
+          run: snyk test --json --print-deps --command=/opt/hostedtoolcache/Python/3.10.7/x64/bin/python3 --file=requirements.txt | snyk-delta
  
