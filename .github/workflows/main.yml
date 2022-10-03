@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: snyk/actions/python-3.8@master
+      - uses: snyk/actions/python-3.7@master
       - name: install snyk + snyk delta
         run: |
           npm install --location=global snyk
@@ -14,3 +14,5 @@ jobs:
           which python3
       - name: Snyk Delta Test
         run: snyk test --json --print-deps --command=/opt/hostedtoolcache/Python/3.10.7/x64/bin/python3 --file=requirements.txt | snyk-delta
+        env:
+          SNYK_TOKEN = ${{ secrets.SNYK_TOKEN }}
