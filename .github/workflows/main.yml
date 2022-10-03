@@ -11,4 +11,4 @@ jobs:
           snyk auth ${{ secrets.SNYK_TOKEN }}
           npm install --location=global snyk-delta
       - name: Snyk Delta Test
-        run: snyk test --command=.venv/bin/python --package-manager=pip --file=testing/requirements.txt --json --print-deps | snyk-delta --baselineOrg --orgID 39e138ee-1e91-4197-9c08-31d4b6fc07a7 --baselineProject 2188c10e-f254-4b0c-8533-66ea8645887a
+        run: snyk test --command=python3 --package-manager=pip --file=requirements.txt --json --print-deps | snyk-delta --baselineOrg --orgID 39e138ee-1e91-4197-9c08-31d4b6fc07a7 --baselineProject 2188c10e-f254-4b0c-8533-66ea8645887a
