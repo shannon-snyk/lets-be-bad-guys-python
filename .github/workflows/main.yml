@@ -10,13 +10,11 @@ jobs:
         env:
            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         continue-on-error: true
-        with:
-          command: monitor
       - name: install snyk + snyk delta + snyk delta test
         run: |
           npm install --location=global snyk
           snyk auth ${{ secrets.SNYK_TOKEN }}
           npm install --location=global snyk-delta
           which python3
-          run: snyk test --json --print-deps --command=/opt/hostedtoolcache/Python/3.10.7/x64/bin/python3 --file=requirements.txt | snyk-delta
+          run: snyk test --json --print-deps --command=/usr/bin/python3 --file=requirements.txt | snyk-delta
  
