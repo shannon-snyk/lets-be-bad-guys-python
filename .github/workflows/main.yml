@@ -12,4 +12,4 @@ jobs:
           npm install --location=global snyk-delta
           which python3
       - name: Snyk Delta Test
-        run: snyk test --json --print-deps --command=.venv/bin/python --file=requirements.txt | snyk-delta
+        run: snyk test --json --print-deps --command=/usr/bin/python3 --file=requirements.txt | snyk-delta
