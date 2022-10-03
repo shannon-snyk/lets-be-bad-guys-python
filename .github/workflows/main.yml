@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4 
       - name: install snyk + snyk delta
         run: |
           npm install --location=global snyk
