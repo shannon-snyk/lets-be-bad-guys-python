@@ -16,5 +16,5 @@ jobs:
           snyk auth ${{ secrets.SNYK_TOKEN }}
           npm install --location=global snyk-delta
           which python3
-          run: snyk test --json --print-deps --command=/usr/bin/python3 --file=requirements.txt | snyk-delta
+          run: snyk test --json --print-deps --command=/usr/bin/python3 --file=requirements.txt --package-manager=pip | snyk-delta
  
